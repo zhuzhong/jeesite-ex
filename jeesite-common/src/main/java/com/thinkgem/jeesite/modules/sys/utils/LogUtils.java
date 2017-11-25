@@ -19,11 +19,11 @@ import com.thinkgem.jeesite.common.utils.CacheUtils;
 import com.thinkgem.jeesite.common.utils.Exceptions;
 import com.thinkgem.jeesite.common.utils.SpringContextHolder;
 import com.thinkgem.jeesite.common.utils.StringUtils;
-import com.thinkgem.jeesite.modules.sys.dao.LogDao;
-import com.thinkgem.jeesite.modules.sys.dao.MenuDao;
 import com.thinkgem.jeesite.modules.sys.entity.Log;
 import com.thinkgem.jeesite.modules.sys.entity.Menu;
 import com.thinkgem.jeesite.modules.sys.entity.User;
+import com.thinkgem.jeesite.modules.sys.service.ILogService;
+import com.thinkgem.jeesite.modules.sys.service.IMenuService;
 
 /**
  * 字典工具类
@@ -34,8 +34,8 @@ public class LogUtils {
 	
 	public static final String CACHE_MENU_NAME_PATH_MAP = "menuNamePathMap";
 	
-	private static LogDao logDao = SpringContextHolder.getBean(LogDao.class);
-	private static MenuDao menuDao = SpringContextHolder.getBean(MenuDao.class);
+	private static ILogService logDao = SpringContextHolder.getBean(ILogService.class);
+	private static IMenuService menuDao = SpringContextHolder.getBean(IMenuService.class);
 	
 	/**
 	 * 保存日志

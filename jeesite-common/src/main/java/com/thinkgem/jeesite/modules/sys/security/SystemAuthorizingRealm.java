@@ -34,7 +34,7 @@ import com.thinkgem.jeesite.common.web.Servlets;
 import com.thinkgem.jeesite.modules.sys.entity.Menu;
 import com.thinkgem.jeesite.modules.sys.entity.Role;
 import com.thinkgem.jeesite.modules.sys.entity.User;
-import com.thinkgem.jeesite.modules.sys.service.SystemService;
+import com.thinkgem.jeesite.modules.sys.service.ISystemService;
 import com.thinkgem.jeesite.modules.sys.utils.LogUtils;
 import com.thinkgem.jeesite.modules.sys.utils.UserUtils;
 import com.thinkgem.jeesite.modules.sys.web.LoginController;
@@ -50,7 +50,7 @@ public class SystemAuthorizingRealm extends AuthorizingRealm {
 
 	private Logger logger = LoggerFactory.getLogger(getClass());
 	
-	private SystemService systemService;
+	private ISystemService systemService;
 	
 	public SystemAuthorizingRealm() {
 		this.setCachingEnabled(false);
@@ -63,7 +63,7 @@ public class SystemAuthorizingRealm extends AuthorizingRealm {
 	protected AuthenticationInfo doGetAuthenticationInfo(AuthenticationToken authcToken) {
 		UsernamePasswordToken token = (UsernamePasswordToken) authcToken;
 		
-		int activeSessionSize = getSystemService().getSessionDao().getActiveSessions(false).size();
+		int activeSessionSize = getSystemService().getActiveSessions(false).size();
 		if (logger.isDebugEnabled()){
 			logger.debug("login submit, active session size: {}, username: {}", activeSessionSize, token.getUsername());
 		}
@@ -74,7 +74,7 @@ public class SystemAuthorizingRealm extends AuthorizingRealm {
 			String code = (String)session.getAttribute(ValidateCodeServlet.VALIDATE_CODE);
 			if (token.getCaptcha() == null || !token.getCaptcha().toUpperCase().equals(code)){
 				throw new AuthenticationException("msg:验证码错误, 请重试.");
-			}
+			}          
 		}
 		
 		// 校验用户名密码
@@ -121,12 +121,12 @@ public class SystemAuthorizingRealm extends AuthorizingRealm {
 		Principal principal = (Principal) getAvailablePrincipal(principals);
 		// 获取当前已登录的用户
 		if (!Global.TRUE.equals(Global.getConfig("user.multiAccountLogin"))){
-			Collection<Session> sessions = getSystemService().getSessionDao().getActiveSessions(true, principal, UserUtils.getSession());
+			Collection<Session> sessions = getSystemService().getActiveSessions(true, principal, UserUtils.getSession());
 			if (sessions.size() > 0){
 				// 如果是登录进来的，则踢出已在线用户
 				if (UserUtils.getSubject().isAuthenticated()){
 					for (Session session : sessions){
-						getSystemService().getSessionDao().delete(session);
+						getSystemService().delete(session);
 					}
 				}
 				// 记住我进来的，并且当前用户已登录，则退出当前用户提示信息。
@@ -209,8 +209,8 @@ public class SystemAuthorizingRealm extends AuthorizingRealm {
 	 */
 	@PostConstruct
 	public void initCredentialsMatcher() {
-		HashedCredentialsMatcher matcher = new HashedCredentialsMatcher(SystemService.HASH_ALGORITHM);
-		matcher.setHashIterations(SystemService.HASH_INTERATIONS);
+		HashedCredentialsMatcher matcher = new HashedCredentialsMatcher(ISystemService.HASH_ALGORITHM);
+		matcher.setHashIterations(ISystemService.HASH_INTERATIONS);
 		setCredentialsMatcher(matcher);
 	}
 	
@@ -239,9 +239,9 @@ public class SystemAuthorizingRealm extends AuthorizingRealm {
 	/**
 	 * 获取系统业务对象
 	 */
-	public SystemService getSystemService() {
+	public ISystemService getSystemService() {
 		if (systemService == null){
-			systemService = SpringContextHolder.getBean(SystemService.class);
+			systemService = SpringContextHolder.getBean(ISystemService.class);
 		}
 		return systemService;
 	}

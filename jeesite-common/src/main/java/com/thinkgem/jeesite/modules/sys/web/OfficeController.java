@@ -25,7 +25,7 @@ import com.thinkgem.jeesite.common.utils.StringUtils;
 import com.thinkgem.jeesite.common.web.BaseController;
 import com.thinkgem.jeesite.modules.sys.entity.Office;
 import com.thinkgem.jeesite.modules.sys.entity.User;
-import com.thinkgem.jeesite.modules.sys.service.OfficeService;
+import com.thinkgem.jeesite.modules.sys.service.IOfficeService;
 import com.thinkgem.jeesite.modules.sys.utils.DictUtils;
 import com.thinkgem.jeesite.modules.sys.utils.UserUtils;
 
@@ -39,7 +39,7 @@ import com.thinkgem.jeesite.modules.sys.utils.UserUtils;
 public class OfficeController extends BaseController {
 
 	@Autowired
-	private OfficeService officeService;
+	private IOfficeService officeService;
 	
 	@ModelAttribute("office")
 	public Office get(@RequestParam(required=false) String id) {

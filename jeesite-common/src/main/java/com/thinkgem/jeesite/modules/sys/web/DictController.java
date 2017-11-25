@@ -26,7 +26,7 @@ import com.thinkgem.jeesite.common.persistence.Page;
 import com.thinkgem.jeesite.common.utils.StringUtils;
 import com.thinkgem.jeesite.common.web.BaseController;
 import com.thinkgem.jeesite.modules.sys.entity.Dict;
-import com.thinkgem.jeesite.modules.sys.service.DictService;
+import com.thinkgem.jeesite.modules.sys.service.IDictService;
 
 /**
  * 字典Controller
@@ -38,7 +38,7 @@ import com.thinkgem.jeesite.modules.sys.service.DictService;
 public class DictController extends BaseController {
 
 	@Autowired
-	private DictService dictService;
+	private IDictService dictService;
 	
 	@ModelAttribute
 	public Dict get(@RequestParam(required=false) String id) {

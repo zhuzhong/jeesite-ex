@@ -24,7 +24,7 @@ import com.thinkgem.jeesite.common.config.Global;
 import com.thinkgem.jeesite.common.utils.StringUtils;
 import com.thinkgem.jeesite.common.web.BaseController;
 import com.thinkgem.jeesite.modules.sys.entity.Menu;
-import com.thinkgem.jeesite.modules.sys.service.SystemService;
+import com.thinkgem.jeesite.modules.sys.service.ISystemService;
 import com.thinkgem.jeesite.modules.sys.utils.UserUtils;
 
 /**
@@ -37,7 +37,7 @@ import com.thinkgem.jeesite.modules.sys.utils.UserUtils;
 public class MenuController extends BaseController {
 
 	@Autowired
-	private SystemService systemService;
+	private ISystemService systemService;
 	
 	@ModelAttribute("menu")
 	public Menu get(@RequestParam(required=false) String id) {

@@ -14,17 +14,17 @@ import org.apache.shiro.subject.Subject;
 import com.thinkgem.jeesite.common.service.BaseService;
 import com.thinkgem.jeesite.common.utils.CacheUtils;
 import com.thinkgem.jeesite.common.utils.SpringContextHolder;
-import com.thinkgem.jeesite.modules.sys.dao.AreaDao;
-import com.thinkgem.jeesite.modules.sys.dao.MenuDao;
-import com.thinkgem.jeesite.modules.sys.dao.OfficeDao;
-import com.thinkgem.jeesite.modules.sys.dao.RoleDao;
-import com.thinkgem.jeesite.modules.sys.dao.UserDao;
 import com.thinkgem.jeesite.modules.sys.entity.Area;
 import com.thinkgem.jeesite.modules.sys.entity.Menu;
 import com.thinkgem.jeesite.modules.sys.entity.Office;
 import com.thinkgem.jeesite.modules.sys.entity.Role;
 import com.thinkgem.jeesite.modules.sys.entity.User;
 import com.thinkgem.jeesite.modules.sys.security.SystemAuthorizingRealm.Principal;
+import com.thinkgem.jeesite.modules.sys.service.IAreaService;
+import com.thinkgem.jeesite.modules.sys.service.IMenuService;
+import com.thinkgem.jeesite.modules.sys.service.IOfficeService;
+import com.thinkgem.jeesite.modules.sys.service.IRoleService;
+import com.thinkgem.jeesite.modules.sys.service.IUserService;
 
 /**
  * 用户工具类
@@ -33,11 +33,11 @@ import com.thinkgem.jeesite.modules.sys.security.SystemAuthorizingRealm.Principa
  */
 public class UserUtils {
 
-	private static UserDao userDao = SpringContextHolder.getBean(UserDao.class);
-	private static RoleDao roleDao = SpringContextHolder.getBean(RoleDao.class);
-	private static MenuDao menuDao = SpringContextHolder.getBean(MenuDao.class);
-	private static AreaDao areaDao = SpringContextHolder.getBean(AreaDao.class);
-	private static OfficeDao officeDao = SpringContextHolder.getBean(OfficeDao.class);
+	private static IUserService userDao = SpringContextHolder.getBean(IUserService.class);
+	private static IRoleService roleDao = SpringContextHolder.getBean(IRoleService.class);
+	private static IMenuService menuDao = SpringContextHolder.getBean(IMenuService.class);
+	private static IAreaService areaDao = SpringContextHolder.getBean(IAreaService.class);
+	private static IOfficeService officeDao = SpringContextHolder.getBean(IOfficeService.class);
 
 	public static final String USER_CACHE = "userCache";
 	public static final String USER_CACHE_ID_ = "id_";

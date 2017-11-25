@@ -28,8 +28,8 @@ import com.thinkgem.jeesite.common.web.BaseController;
 import com.thinkgem.jeesite.modules.sys.entity.Office;
 import com.thinkgem.jeesite.modules.sys.entity.Role;
 import com.thinkgem.jeesite.modules.sys.entity.User;
-import com.thinkgem.jeesite.modules.sys.service.OfficeService;
-import com.thinkgem.jeesite.modules.sys.service.SystemService;
+import com.thinkgem.jeesite.modules.sys.service.IOfficeService;
+import com.thinkgem.jeesite.modules.sys.service.ISystemService;
 import com.thinkgem.jeesite.modules.sys.utils.UserUtils;
 
 /**
@@ -42,10 +42,10 @@ import com.thinkgem.jeesite.modules.sys.utils.UserUtils;
 public class RoleController extends BaseController {
 
 	@Autowired
-	private SystemService systemService;
+	private ISystemService systemService;
 	
 	@Autowired
-	private OfficeService officeService;
+	private IOfficeService officeService;
 	
 	@ModelAttribute("role")
 	public Role get(@RequestParam(required=false) String id) {

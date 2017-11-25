@@ -1,7 +1,7 @@
 /**
  * Copyright &copy; 2012-2016 <a href="https://github.com/thinkgem/jeesite">JeeSite</a> All rights reserved.
  */
-package com.thinkgem.jeesite.modules.sys.service;
+package com.thinkgem.jeesite.modules.sys.service.impl;
 
 import java.util.ArrayList;
 import java.util.List;

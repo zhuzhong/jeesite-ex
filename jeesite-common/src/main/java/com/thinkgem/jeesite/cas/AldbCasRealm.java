@@ -27,7 +27,7 @@ import com.thinkgem.jeesite.modules.sys.entity.Menu;
 import com.thinkgem.jeesite.modules.sys.entity.Role;
 import com.thinkgem.jeesite.modules.sys.entity.User;
 import com.thinkgem.jeesite.modules.sys.security.SystemAuthorizingRealm.Principal;
-import com.thinkgem.jeesite.modules.sys.service.SystemService;
+import com.thinkgem.jeesite.modules.sys.service.ISystemService;
 import com.thinkgem.jeesite.modules.sys.utils.LogUtils;
 import com.thinkgem.jeesite.modules.sys.utils.UserUtils;
 
@@ -170,11 +170,11 @@ public class AldbCasRealm extends CasRealm {
 		// 模块授权预留接口
 	}
 
-	private SystemService systemService;
+	private ISystemService systemService;
 
-	private SystemService getSystemService() {
+	private ISystemService getSystemService() {
 		if (systemService == null) {
-			systemService = SpringContextHolder.getBean(SystemService.class);
+			systemService = SpringContextHolder.getBean(ISystemService.class);
 		}
 		return systemService;
 	}

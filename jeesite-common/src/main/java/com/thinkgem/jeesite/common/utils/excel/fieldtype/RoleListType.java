@@ -6,11 +6,11 @@ package com.thinkgem.jeesite.common.utils.excel.fieldtype;
 import java.util.List;
 
 import com.google.common.collect.Lists;
-import com.thinkgem.jeesite.common.utils.StringUtils;
 import com.thinkgem.jeesite.common.utils.Collections3;
 import com.thinkgem.jeesite.common.utils.SpringContextHolder;
+import com.thinkgem.jeesite.common.utils.StringUtils;
 import com.thinkgem.jeesite.modules.sys.entity.Role;
-import com.thinkgem.jeesite.modules.sys.service.SystemService;
+import com.thinkgem.jeesite.modules.sys.service.ISystemService;
 
 /**
  * 字段类型转换
@@ -19,7 +19,7 @@ import com.thinkgem.jeesite.modules.sys.service.SystemService;
  */
 public class RoleListType {
 
-	private static SystemService systemService = SpringContextHolder.getBean(SystemService.class);
+	private static ISystemService systemService = SpringContextHolder.getBean(ISystemService.class);
 	
 	/**
 	 * 获取对象值（导入）

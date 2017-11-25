@@ -13,8 +13,8 @@ import com.google.common.collect.Maps;
 import com.thinkgem.jeesite.common.mapper.JsonMapper;
 import com.thinkgem.jeesite.common.utils.CacheUtils;
 import com.thinkgem.jeesite.common.utils.SpringContextHolder;
-import com.thinkgem.jeesite.modules.sys.dao.DictDao;
 import com.thinkgem.jeesite.modules.sys.entity.Dict;
+import com.thinkgem.jeesite.modules.sys.service.IDictService;
 
 /**
  * 字典工具类
@@ -23,7 +23,7 @@ import com.thinkgem.jeesite.modules.sys.entity.Dict;
  */
 public class DictUtils {
 	
-	private static DictDao dictDao = SpringContextHolder.getBean(DictDao.class);
+	private static IDictService dictDao = SpringContextHolder.getBean(IDictService.class);
 
 	public static final String CACHE_DICT_MAP = "dictMap";
 	
@@ -71,7 +71,7 @@ public class DictUtils {
 					dictList.add(dict);
 				}else{
 					dictMap.put(dict.getType(), Lists.newArrayList(dict));
-				}
+				}             
 			}
 			CacheUtils.put(CACHE_DICT_MAP, dictMap);
 		}
