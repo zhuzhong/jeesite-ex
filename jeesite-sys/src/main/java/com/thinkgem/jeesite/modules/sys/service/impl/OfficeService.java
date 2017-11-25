@@ -12,6 +12,7 @@ import org.springframework.transaction.annotation.Transactional;
 import com.thinkgem.jeesite.common.service.TreeService;
 import com.thinkgem.jeesite.modules.sys.dao.OfficeDao;
 import com.thinkgem.jeesite.modules.sys.entity.Office;
+import com.thinkgem.jeesite.modules.sys.service.IOfficeService;
 import com.thinkgem.jeesite.modules.sys.utils.UserUtils;
 
 /**
@@ -21,7 +22,7 @@ import com.thinkgem.jeesite.modules.sys.utils.UserUtils;
  */
 @Service
 @Transactional(readOnly = true)
-public class OfficeService extends TreeService<OfficeDao, Office> {
+public class OfficeService extends TreeService<OfficeDao, Office> implements IOfficeService {
 
 	public List<Office> findAll(){
 		return UserUtils.getOfficeList();
@@ -54,6 +55,12 @@ public class OfficeService extends TreeService<OfficeDao, Office> {
 	public void delete(Office office) {
 		super.delete(office);
 		UserUtils.removeCache(UserUtils.CACHE_OFFICE_LIST);
+	}
+
+	@Override
+	public List<Office> findAllList(Office office) {
+
+		return dao.findAllList(office);
 	}
 	
 }

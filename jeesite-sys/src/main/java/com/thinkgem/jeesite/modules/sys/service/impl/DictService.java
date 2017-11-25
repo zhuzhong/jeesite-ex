@@ -12,6 +12,7 @@ import com.thinkgem.jeesite.common.service.CrudService;
 import com.thinkgem.jeesite.common.utils.CacheUtils;
 import com.thinkgem.jeesite.modules.sys.dao.DictDao;
 import com.thinkgem.jeesite.modules.sys.entity.Dict;
+import com.thinkgem.jeesite.modules.sys.service.IDictService;
 import com.thinkgem.jeesite.modules.sys.utils.DictUtils;
 
 /**
@@ -21,7 +22,7 @@ import com.thinkgem.jeesite.modules.sys.utils.DictUtils;
  */
 @Service
 @Transactional(readOnly = true)
-public class DictService extends CrudService<DictDao, Dict> {
+public class DictService extends CrudService<DictDao, Dict> implements IDictService {
 	
 	/**
 	 * 查询字段类型列表
@@ -41,6 +42,12 @@ public class DictService extends CrudService<DictDao, Dict> {
 	public void delete(Dict dict) {
 		super.delete(dict);
 		CacheUtils.remove(DictUtils.CACHE_DICT_MAP);
+	}
+
+	@Override
+	public List<Dict> findAllList(Dict dict) {
+		// TODO Auto-generated method stub
+		return dao.findAllList(dict);
 	}
 
 }

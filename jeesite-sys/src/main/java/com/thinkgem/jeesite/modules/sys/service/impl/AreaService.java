@@ -11,6 +11,7 @@ import org.springframework.transaction.annotation.Transactional;
 import com.thinkgem.jeesite.common.service.TreeService;
 import com.thinkgem.jeesite.modules.sys.dao.AreaDao;
 import com.thinkgem.jeesite.modules.sys.entity.Area;
+import com.thinkgem.jeesite.modules.sys.service.IAreaService;
 import com.thinkgem.jeesite.modules.sys.utils.UserUtils;
 
 /**
@@ -20,7 +21,7 @@ import com.thinkgem.jeesite.modules.sys.utils.UserUtils;
  */
 @Service
 @Transactional(readOnly = true)
-public class AreaService extends TreeService<AreaDao, Area> {
+public class AreaService extends TreeService<AreaDao, Area> implements IAreaService {
 
 	public List<Area> findAll(){
 		return UserUtils.getAreaList();
@@ -37,5 +38,13 @@ public class AreaService extends TreeService<AreaDao, Area> {
 		super.delete(area);
 		UserUtils.removeCache(UserUtils.CACHE_AREA_LIST);
 	}
+	//--------------------------
+
+	@Override
+	public List<Area> findAllList(Area area) {
+		// TODO Auto-generated method stub
+		return dao.findAllList(area);
+	}
+	
 	
 }

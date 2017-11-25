@@ -3,6 +3,7 @@
  */
 package com.thinkgem.jeesite.modules.sys.service.impl;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -11,6 +12,7 @@ import com.thinkgem.jeesite.common.service.CrudService;
 import com.thinkgem.jeesite.common.utils.DateUtils;
 import com.thinkgem.jeesite.modules.sys.dao.LogDao;
 import com.thinkgem.jeesite.modules.sys.entity.Log;
+import com.thinkgem.jeesite.modules.sys.service.ILogService;
 
 /**
  * 日志Service
@@ -19,7 +21,7 @@ import com.thinkgem.jeesite.modules.sys.entity.Log;
  */
 @Service
 @Transactional(readOnly = true)
-public class LogService extends CrudService<LogDao, Log> {
+public class LogService extends CrudService<LogDao, Log> implements ILogService{
 
 	public Page<Log> findPage(Page<Log> page, Log log) {
 		
@@ -32,6 +34,15 @@ public class LogService extends CrudService<LogDao, Log> {
 		}
 		
 		return super.findPage(page, log);
+		
+	}
+	
+	@Autowired
+	private LogDao logDao;
+	@Transactional(readOnly = false)
+	@Override
+	public void insert(Log log) {
+		logDao.insert(log);
 		
 	}
 	

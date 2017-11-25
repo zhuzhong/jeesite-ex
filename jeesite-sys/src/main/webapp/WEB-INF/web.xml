@@ -108,7 +108,7 @@
 		<url-pattern>/</url-pattern>
 	</servlet-mapping>
 
-	<!-- Activiti diagram-view callback filter-->
+	<!-- Activiti diagram-view callback filter
 	<filter>
 		<filter-name>JSONPFilter</filter-name>
 		<filter-class>com.thinkgem.jeesite.modules.act.rest.servlet.JsonpCallbackFilter</filter-class>
@@ -116,7 +116,7 @@
 	<filter-mapping>
 		<filter-name>JSONPFilter</filter-name>
 		<url-pattern>/act/service/*</url-pattern>
-	</filter-mapping>
+	</filter-mapping>-->
 
 	<!-- DruidStatView -->
 	<servlet>
