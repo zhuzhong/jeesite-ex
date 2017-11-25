@@ -1,4 +1,4 @@
-package com.thinkgem.jeesite.modules.sys.service;
+package com.thinkgem.jeesite.modules.sys.api;
 
 import java.util.Collection;
 import java.util.List;

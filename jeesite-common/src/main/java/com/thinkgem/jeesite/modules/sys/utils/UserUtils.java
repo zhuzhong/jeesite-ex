@@ -14,17 +14,17 @@ import org.apache.shiro.subject.Subject;
 import com.thinkgem.jeesite.common.service.BaseService;
 import com.thinkgem.jeesite.common.utils.CacheUtils;
 import com.thinkgem.jeesite.common.utils.SpringContextHolder;
+import com.thinkgem.jeesite.modules.sys.api.IAreaService;
+import com.thinkgem.jeesite.modules.sys.api.IMenuService;
+import com.thinkgem.jeesite.modules.sys.api.IOfficeService;
+import com.thinkgem.jeesite.modules.sys.api.IRoleService;
+import com.thinkgem.jeesite.modules.sys.api.IUserService;
 import com.thinkgem.jeesite.modules.sys.entity.Area;
 import com.thinkgem.jeesite.modules.sys.entity.Menu;
 import com.thinkgem.jeesite.modules.sys.entity.Office;
 import com.thinkgem.jeesite.modules.sys.entity.Role;
 import com.thinkgem.jeesite.modules.sys.entity.User;
 import com.thinkgem.jeesite.modules.sys.security.SystemAuthorizingRealm.Principal;
-import com.thinkgem.jeesite.modules.sys.service.IAreaService;
-import com.thinkgem.jeesite.modules.sys.service.IMenuService;
-import com.thinkgem.jeesite.modules.sys.service.IOfficeService;
-import com.thinkgem.jeesite.modules.sys.service.IRoleService;
-import com.thinkgem.jeesite.modules.sys.service.IUserService;
 
 /**
  * 用户工具类

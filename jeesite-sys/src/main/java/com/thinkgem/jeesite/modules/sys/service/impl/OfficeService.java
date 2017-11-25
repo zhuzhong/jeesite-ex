@@ -10,9 +10,9 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import com.thinkgem.jeesite.common.service.TreeService;
+import com.thinkgem.jeesite.modules.sys.api.IOfficeService;
 import com.thinkgem.jeesite.modules.sys.dao.OfficeDao;
 import com.thinkgem.jeesite.modules.sys.entity.Office;
-import com.thinkgem.jeesite.modules.sys.service.IOfficeService;
 import com.thinkgem.jeesite.modules.sys.utils.UserUtils;
 
 /**

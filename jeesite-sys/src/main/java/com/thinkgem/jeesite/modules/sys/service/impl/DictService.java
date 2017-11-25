@@ -10,9 +10,9 @@ import org.springframework.transaction.annotation.Transactional;
 
 import com.thinkgem.jeesite.common.service.CrudService;
 import com.thinkgem.jeesite.common.utils.CacheUtils;
+import com.thinkgem.jeesite.modules.sys.api.IDictService;
 import com.thinkgem.jeesite.modules.sys.dao.DictDao;
 import com.thinkgem.jeesite.modules.sys.entity.Dict;
-import com.thinkgem.jeesite.modules.sys.service.IDictService;
 import com.thinkgem.jeesite.modules.sys.utils.DictUtils;
 
 /**

@@ -23,11 +23,11 @@ import org.jasig.cas.client.validation.TicketValidator;
 
 import com.thinkgem.jeesite.common.utils.SpringContextHolder;
 import com.thinkgem.jeesite.common.web.Servlets;
+import com.thinkgem.jeesite.modules.sys.api.ISystemService;
 import com.thinkgem.jeesite.modules.sys.entity.Menu;
 import com.thinkgem.jeesite.modules.sys.entity.Role;
 import com.thinkgem.jeesite.modules.sys.entity.User;
 import com.thinkgem.jeesite.modules.sys.security.SystemAuthorizingRealm.Principal;
-import com.thinkgem.jeesite.modules.sys.service.ISystemService;
 import com.thinkgem.jeesite.modules.sys.utils.LogUtils;
 import com.thinkgem.jeesite.modules.sys.utils.UserUtils;
 
@@ -63,7 +63,7 @@ public class AldbCasRealm extends CasRealm {
 			// 获取用户
 			User user = getSystemService().getUserByLoginName(userId);
 
-			Map attributes = casPrincipal.getAttributes();
+			Map<String,Object> attributes = casPrincipal.getAttributes();
 			casToken.setUserId(userId);
 			String rememberMeAttributeName = getRememberMeAttributeName();
 			String rememberMeStringValue = (String) attributes

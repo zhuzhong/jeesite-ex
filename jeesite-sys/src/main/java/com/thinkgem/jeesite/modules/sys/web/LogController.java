@@ -14,8 +14,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 
 import com.thinkgem.jeesite.common.persistence.Page;
 import com.thinkgem.jeesite.common.web.BaseController;
+import com.thinkgem.jeesite.modules.sys.api.ILogService;
 import com.thinkgem.jeesite.modules.sys.entity.Log;
-import com.thinkgem.jeesite.modules.sys.service.ILogService;
 
 /**
  * 日志Controller

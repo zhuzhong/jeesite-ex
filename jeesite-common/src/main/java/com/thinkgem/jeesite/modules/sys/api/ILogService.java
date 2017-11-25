@@ -1,4 +1,4 @@
-package com.thinkgem.jeesite.modules.sys.service;
+package com.thinkgem.jeesite.modules.sys.api;
 
 import com.thinkgem.jeesite.common.persistence.Page;
 import com.thinkgem.jeesite.modules.sys.entity.Log;
