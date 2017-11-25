@@ -13,8 +13,9 @@ import com.thinkgem.jeesite.modules.sys.security.SystemAuthorizingRealm.Principa
 
 public interface ISystemService {
 
-	String HASH_ALGORITHM = null;
-	int HASH_INTERATIONS = 0;
+	public static final String HASH_ALGORITHM = "SHA-1";
+	public static final int HASH_INTERATIONS = 1024;
+	public static final int SALT_SIZE = 8;
 
 	Menu getMenu(String id);
 
@@ -64,10 +65,10 @@ public interface ISystemService {
 
 	List<User> findUserByOfficeId(String officeId);
 
-	//{getSystemService().getSessionDao().getActiveSessions}
+	// {getSystemService().getSessionDao().getActiveSessions}
 	Collection<Session> getActiveSessions(boolean b, Principal principal, Session session);
 
-	void delete(Session session); //getSystemService().getSessionDao().delete
+	void delete(Session session); // getSystemService().getSessionDao().delete
 
 	Collection<Session> getActiveSessions(boolean b);
 

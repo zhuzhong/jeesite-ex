@@ -6,6 +6,7 @@ package com.thinkgem.jeesite.modules.sys.security;
 import java.io.Serializable;
 import java.util.Collection;
 import java.util.List;
+import java.util.Map;
 
 import javax.annotation.PostConstruct;
 
@@ -26,8 +27,10 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Service;
 
+import com.google.common.collect.Maps;
 import com.thinkgem.jeesite.common.config.Global;
 import com.thinkgem.jeesite.common.servlet.ValidateCodeServlet;
+import com.thinkgem.jeesite.common.utils.CacheUtils;
 import com.thinkgem.jeesite.common.utils.Encodes;
 import com.thinkgem.jeesite.common.utils.SpringContextHolder;
 import com.thinkgem.jeesite.common.web.Servlets;
@@ -37,7 +40,6 @@ import com.thinkgem.jeesite.modules.sys.entity.User;
 import com.thinkgem.jeesite.modules.sys.service.ISystemService;
 import com.thinkgem.jeesite.modules.sys.utils.LogUtils;
 import com.thinkgem.jeesite.modules.sys.utils.UserUtils;
-import com.thinkgem.jeesite.modules.sys.web.LoginController;
 
 /**
  * 系统安全认证实现类
@@ -69,7 +71,7 @@ public class SystemAuthorizingRealm extends AuthorizingRealm {
 		}
 		
 		// 校验登录验证码
-		if (LoginController.isValidateCodeLogin(token.getUsername(), false, false)){
+		if (isValidateCodeLogin(token.getUsername(), false, false)){
 			Session session = UserUtils.getSession();
 			String code = (String)session.getAttribute(ValidateCodeServlet.VALIDATE_CODE);
 			if (token.getCaptcha() == null || !token.getCaptcha().toUpperCase().equals(code)){
@@ -89,6 +91,34 @@ public class SystemAuthorizingRealm extends AuthorizingRealm {
 		} else {
 			return null;
 		}
+	}
+	
+	/**
+	 * 是否是验证码登录
+	 * @param useruame 用户名
+	 * @param isFail 计数加1
+	 * @param clean 计数清零
+	 * @return
+	 */
+	@SuppressWarnings("unchecked")
+	private static boolean isValidateCodeLogin(String useruame, boolean isFail, boolean clean){
+		Map<String, Integer> loginFailMap = (Map<String, Integer>)CacheUtils.get("loginFailMap");
+		if (loginFailMap==null){
+			loginFailMap = Maps.newHashMap();
+			CacheUtils.put("loginFailMap", loginFailMap);
+		}
+		Integer loginFailNum = loginFailMap.get(useruame);
+		if (loginFailNum==null){
+			loginFailNum = 0;
+		}
+		if (isFail){
+			loginFailNum++;
+			loginFailMap.put(useruame, loginFailNum);
+		}
+		if (clean){
+			loginFailMap.remove(useruame);
+		}
+		return loginFailNum >= 3;
 	}
 	
 	/**

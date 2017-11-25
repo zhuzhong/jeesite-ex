@@ -39,6 +39,8 @@ public class LogService extends CrudService<LogDao, Log> implements ILogService{
 	
 	@Autowired
 	private LogDao logDao;
+	
+	
 	@Transactional(readOnly = false)
 	@Override
 	public void insert(Log log) {
