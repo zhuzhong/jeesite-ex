@@ -6,7 +6,6 @@ package com.thinkgem.jeesite.modules.sys.utils;
 import java.lang.reflect.Method;
 import java.util.List;
 import java.util.Map;
-import java.util.concurrent.BlockingQueue;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 
@@ -39,7 +38,7 @@ public class LogUtils {
 	public static final String CACHE_MENU_NAME_PATH_MAP = "menuNamePathMap";
 
 	private static ILogService logDao = SpringContextHolder.getBean(ILogService.class);
-	
+
 	private static IMenuService menuDao = SpringContextHolder.getBean(IMenuService.class);
 
 	/**
@@ -49,11 +48,8 @@ public class LogUtils {
 		saveLog(request, null, null, title);
 	}
 
-	
-	private static ExecutorService executors=Executors.newFixedThreadPool(Runtime.getRuntime().availableProcessors()); //线程池
-	
-	
-	
+	private static ExecutorService executors = Executors.newFixedThreadPool(Runtime.getRuntime().availableProcessors()); // 线程池
+
 	/**
 	 * 保存日志
 	 */
@@ -69,8 +65,8 @@ public class LogUtils {
 			log.setParams(request.getParameterMap());
 			log.setMethod(request.getMethod());
 			// 异步保存日志
-			//new SaveLogThread(log, handler, ex).start();
-			executors.submit(new SaveLogThread(log, handler, ex));//应用线程池处理这个
+			// new SaveLogThread(log, handler, ex).start();
+			executors.submit(new SaveLogThread(log, handler, ex));// 应用线程池处理这个
 		}
 	}
 
