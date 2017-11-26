@@ -11,9 +11,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-import com.thinkgem.jeesite.common.persistence.Page;
 import com.thinkgem.jeesite.modules.sys.api.ISystemService;
-import com.thinkgem.jeesite.modules.sys.entity.Menu;
 import com.thinkgem.jeesite.modules.sys.entity.Role;
 import com.thinkgem.jeesite.modules.sys.entity.User;
 import com.thinkgem.jeesite.modules.sys.security.SystemAuthorizingRealm.Principal;
@@ -30,7 +28,7 @@ public class SystemServiceImpl implements ISystemService{
 	@Autowired
 	private SystemService systemService;
 	
-	@Override
+	/*@Override
 	public Menu getMenu(String id) {
 		// TODO Auto-generated method stub
 		return systemService.getMenu(id);
@@ -54,9 +52,9 @@ public class SystemServiceImpl implements ISystemService{
 	public void deleteMenu(Menu menu) {
 		// TODO Auto-generated method stub
 		systemService.deleteMenu(menu);
-	}
+	}*/
 
-	@Transactional(readOnly = false)
+	/*@Transactional(readOnly = false)
 	@Override
 	public void updateMenuSort(Menu menu) {
 		// TODO Auto-generated method stub
@@ -69,20 +67,22 @@ public class SystemServiceImpl implements ISystemService{
 		return systemService.getRole(id);
 	}
 
-	@Override
-	public List<Role> findAllRole() {
-		// TODO Auto-generated method stub
-		return systemService.findAllRole();
-	}
+
 
 	@Transactional(readOnly = false)
 	@Override
 	public void saveRole(Role role) {
 		// TODO Auto-generated method stub
 		systemService.saveRole(role);
-	}
+	}*/
 
-	@Transactional(readOnly = false)
+	@Override
+	public List<Role> findAllRole() {
+		// TODO Auto-generated method stub
+		return systemService.findAllRole();
+	}
+	
+	/*@Transactional(readOnly = false)
 	@Override
 	public void deleteRole(Role role) {
 		// TODO Auto-generated method stub
@@ -100,8 +100,8 @@ public class SystemServiceImpl implements ISystemService{
 		// TODO Auto-generated method stub
 		return systemService.findUser(page, user);
 	}
-
-	@Override
+*/
+	/*@Override
 	public User getUser(String userId) {
 		// TODO Auto-generated method stub
 		return systemService.getUser(userId);
@@ -130,8 +130,8 @@ public class SystemServiceImpl implements ISystemService{
 		// TODO Auto-generated method stub
 		return systemService.getRoleByEnname(enname);
 	}
-
-	@Override
+*/
+	/*@Override
 	public String entryptPassword(String newPassword) {
 		// TODO Auto-generated method stub
 		return SystemService.entryptPassword(newPassword);
@@ -147,7 +147,7 @@ public class SystemServiceImpl implements ISystemService{
 	public void deleteUser(User user) {
 		// TODO Auto-generated method stub
 		systemService.deleteUser(user);
-	}
+	}*/
 
 	@Override
 	public User getUserByLoginName(String loginName) {
@@ -155,7 +155,7 @@ public class SystemServiceImpl implements ISystemService{
 		return systemService.getUserByLoginName(loginName);
 	}
 
-	@Transactional(readOnly = false)
+	/*@Transactional(readOnly = false)
 	@Override
 	public void updateUserInfo(User currentUser) {
 		// TODO Auto-generated method stub
@@ -179,7 +179,7 @@ public class SystemServiceImpl implements ISystemService{
 	public List<User> findUserByOfficeId(String officeId) {
 		// TODO Auto-generated method stub
 		return systemService.findUserByOfficeId(officeId);
-	}
+	}*/
 
 	@Override
 	public Collection<Session> getActiveSessions(boolean b, Principal principal, Session session) {

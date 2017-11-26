@@ -23,8 +23,8 @@ import com.google.common.collect.Maps;
 import com.thinkgem.jeesite.common.config.Global;
 import com.thinkgem.jeesite.common.utils.StringUtils;
 import com.thinkgem.jeesite.common.web.BaseController;
-import com.thinkgem.jeesite.modules.sys.api.IAreaService;
 import com.thinkgem.jeesite.modules.sys.entity.Area;
+import com.thinkgem.jeesite.modules.sys.service.impl.AreaService;
 import com.thinkgem.jeesite.modules.sys.utils.UserUtils;
 
 /**
@@ -37,7 +37,7 @@ import com.thinkgem.jeesite.modules.sys.utils.UserUtils;
 public class AreaController extends BaseController {
 
 	@Autowired
-	private IAreaService areaService;
+	private AreaService areaService;
 	
 	@ModelAttribute("area")
 	public Area get(@RequestParam(required=false) String id) {

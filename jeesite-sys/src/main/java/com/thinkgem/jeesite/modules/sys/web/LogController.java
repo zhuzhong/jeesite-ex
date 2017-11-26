@@ -14,8 +14,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 
 import com.thinkgem.jeesite.common.persistence.Page;
 import com.thinkgem.jeesite.common.web.BaseController;
-import com.thinkgem.jeesite.modules.sys.api.ILogService;
 import com.thinkgem.jeesite.modules.sys.entity.Log;
+import com.thinkgem.jeesite.modules.sys.service.impl.LogService;
 
 /**
  * 日志Controller
@@ -27,7 +27,7 @@ import com.thinkgem.jeesite.modules.sys.entity.Log;
 public class LogController extends BaseController {
 
 	@Autowired
-	private ILogService logService;
+	private LogService logService;
 	
 	@RequiresPermissions("sys:log:view")
 	@RequestMapping(value = {"list", ""})

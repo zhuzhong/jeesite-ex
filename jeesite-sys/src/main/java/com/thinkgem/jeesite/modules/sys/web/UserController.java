@@ -32,10 +32,10 @@ import com.thinkgem.jeesite.common.utils.StringUtils;
 import com.thinkgem.jeesite.common.utils.excel.ExportExcel;
 import com.thinkgem.jeesite.common.utils.excel.ImportExcel;
 import com.thinkgem.jeesite.common.web.BaseController;
-import com.thinkgem.jeesite.modules.sys.api.ISystemService;
 import com.thinkgem.jeesite.modules.sys.entity.Office;
 import com.thinkgem.jeesite.modules.sys.entity.Role;
 import com.thinkgem.jeesite.modules.sys.entity.User;
+import com.thinkgem.jeesite.modules.sys.service.impl.SystemService;
 import com.thinkgem.jeesite.modules.sys.utils.UserUtils;
 
 /**
@@ -48,7 +48,7 @@ import com.thinkgem.jeesite.modules.sys.utils.UserUtils;
 public class UserController extends BaseController {
 
 	@Autowired
-	private ISystemService systemService;
+	private SystemService systemService;
 	
 	@ModelAttribute
 	public User get(@RequestParam(required=false) String id) {
@@ -107,7 +107,7 @@ public class UserController extends BaseController {
 		user.setOffice(new Office(request.getParameter("office.id")));
 		// 如果新密码为空，则不更换密码
 		if (StringUtils.isNotBlank(user.getNewPassword())) {
-			user.setPassword(systemService.entryptPassword(user.getNewPassword()));
+			user.setPassword(SystemService.entryptPassword(user.getNewPassword()));
 		}
 		if (!beanValidator(model, user)){
 			return form(user, model);
@@ -198,7 +198,7 @@ public class UserController extends BaseController {
 			for (User user : list){
 				try{
 					if ("true".equals(checkLoginName("", user.getLoginName()))){
-						user.setPassword(systemService.entryptPassword("123456"));
+						user.setPassword(SystemService.entryptPassword("123456"));
 						BeanValidators.validateWithException(validator, user);
 						systemService.saveUser(user);
 						successNum++;
@@ -320,7 +320,7 @@ public class UserController extends BaseController {
 				model.addAttribute("message", "演示模式，不允许操作！");
 				return "modules/sys/userModifyPwd";
 			}
-			if (systemService.validatePassword(oldPassword, user.getPassword())){
+			if (SystemService.validatePassword(oldPassword, user.getPassword())){
 				systemService.updatePasswordById(user.getId(), user.getLoginName(), newPassword);
 				model.addAttribute("message", "修改密码成功");
 			}else{

@@ -10,14 +10,14 @@ public interface IOfficeService {
 
 	List<Office> findList(Office office);
 
-	Office get(String id);
+	//Office get(String id);
 
-	List<Office> findAll();
+	//List<Office> findAll();
 
-	void save(Office office);
+	//void save(Office office);
 
-	void delete(Office office);
+	//void delete(Office office);
 
-	List<Office> findList(Boolean isAll);
+	//List<Office> findList(Boolean isAll);
 
 }

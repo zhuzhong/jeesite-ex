@@ -23,8 +23,8 @@ import com.google.common.collect.Maps;
 import com.thinkgem.jeesite.common.config.Global;
 import com.thinkgem.jeesite.common.utils.StringUtils;
 import com.thinkgem.jeesite.common.web.BaseController;
-import com.thinkgem.jeesite.modules.sys.api.ISystemService;
 import com.thinkgem.jeesite.modules.sys.entity.Menu;
+import com.thinkgem.jeesite.modules.sys.service.impl.SystemService;
 import com.thinkgem.jeesite.modules.sys.utils.UserUtils;
 
 /**
@@ -37,7 +37,7 @@ import com.thinkgem.jeesite.modules.sys.utils.UserUtils;
 public class MenuController extends BaseController {
 
 	@Autowired
-	private ISystemService systemService;
+	private SystemService systemService;
 	
 	@ModelAttribute("menu")
 	public Menu get(@RequestParam(required=false) String id) {

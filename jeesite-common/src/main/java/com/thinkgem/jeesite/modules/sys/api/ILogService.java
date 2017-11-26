@@ -7,6 +7,6 @@ public interface ILogService {
 
 	void insert(Log log);
 
-	Page<Log> findPage(Page<Log> page, Log log);
+	//Page<Log> findPage(Page<Log> page, Log log);
 
 }
