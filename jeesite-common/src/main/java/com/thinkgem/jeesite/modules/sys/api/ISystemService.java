@@ -5,8 +5,6 @@ import java.util.List;
 
 import org.apache.shiro.session.Session;
 
-import com.thinkgem.jeesite.common.persistence.Page;
-import com.thinkgem.jeesite.modules.sys.entity.Menu;
 import com.thinkgem.jeesite.modules.sys.entity.Role;
 import com.thinkgem.jeesite.modules.sys.entity.User;
 import com.thinkgem.jeesite.modules.sys.security.SystemAuthorizingRealm.Principal;
