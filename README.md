@@ -42,4 +42,4 @@ jeesite-biz-demo 提供了一个业务开发demo.对于一个大型的项目，�
 	cas 参数的配置
 	
 1. 使用jeesite-biz-demo模板开发业务功能，也可以在这个框架基础之上进行个性化裁剪，部署业务系统；
-2. 在jeesite-sys中进行菜单挂载，测试用户权限，登陆
+2. 在jeesite-sys中进行菜单挂载，测试用户权限，登陆,测试账号thinkgem/admin
