@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+	xmlns:dubbo="http://code.alibabatech.com/schema/dubbo"
+	xmlns:p="http://www.springframework.org/schema/p"
+	xsi:schemaLocation="
+			http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+			http://code.alibabatech.com/schema/dubbo http://code.alibabatech.com/schema/dubbo/dubbo.xsd">
+
+
+	<dubbo:application name="jeesite-biz-demo" owner="zhuzhong" organization="test"/>
+
+	<dubbo:registry protocol="${dubbo.registry.protocol}" address="${dubbo.registry.address}" group="dubbo-${env-path}" check="false" />
+	
+	 <dubbo:protocol id="rpc" name="${dubbo.protocol.internal}" threadpool="${dubbo.protocol.internal.threadpool}" threads="${dubbo.protocol.internal.threads}" port="${dubbo.protocol.internal.provider.port}"/>
+	
+	
+	<!-- 服务消费者缺省值配置 check="false" 关闭所有服务的启动时检查-->
+	<dubbo:consumer timeout="${dubbo.protocol.internal.provider.timeout}" retries="0" check="false"/>	
+	
+	
+	
+	<dubbo:reference  id="casUserService" interface="com.z.jeesite.sys.api.api.CasUserService"  version="1.0.0" check="true"/>  
+	
+
+	
+</beans>

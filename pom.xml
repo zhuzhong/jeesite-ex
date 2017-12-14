@@ -10,10 +10,8 @@
 	<name>self-learning</name>
 	<url>http://maven.apache.org</url>
 
-	<modules>
-		<module>jeesite-common</module>
-		<module>jeesite-index</module>
-		<module>jeesite-oa</module>
+	<modules>		
 		<module>jeesite-sys</module>
+		<module>jeesite-biz-demo</module>
 	</modules>
 </project>
