@@ -19,7 +19,7 @@
 	       <bean id="propertyConfigurer" class="org.springframework.beans.factory.config.PropertyPlaceholderConfigurer" lazy-init="false">
 		        <property name="locations">
 		            <list>
-				<!-- 		<value>http://prop_server/props/aldb-magicmall/application.properties</value>  -->
+				
 		            <value>classpath:application.properties</value>  
 		            </list>
 		        </property>
