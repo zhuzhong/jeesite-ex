@@ -61,34 +61,14 @@
 	<bean id="securityManager" class="org.apache.shiro.web.mgt.DefaultWebSecurityManager">
 		<!-- <property name="realm" ref="systemAuthorizingRealm" /> -->
 		<property name="realm" ref="casRealm" />
-		<!-- <property name="sessionManager" ref="sessionManager" /> -->
+			<property name="sessionManager" ref="sessionManager" /> 
 		<property name="cacheManager" ref="shiroCacheManager" />
 	</bean>
 
+	<bean id="sessionMananager" class="org.apache.shiro.web.session.mgt.ServletContainerSessionManager" />
 
-	<!-- 指定本系统SESSIONID, 默认为: JSESSIONID 问题: 与SERVLET容器名冲突, 如JETTY, TOMCAT 等默认JSESSIONID, 
-		当跳出SHIRO SERVLET时如ERROR-PAGE容器会为JSESSIONID重新分配值导致登录会话丢失! -->
-	<bean id="sessionIdCookie" class="org.apache.shiro.web.servlet.SimpleCookie">
-		<constructor-arg name="name" value="jeesite.session.id" />
-	</bean>
 
-	<!-- 自定义Session存储容器 -->
-	<!-- <bean id="sessionDAO" class="com.thinkgem.jeesite.common.security.shiro.session.JedisSessionDAO"> -->
-	<!-- <property name="sessionIdGenerator" ref="idGen" /> -->
-	<!-- <property name="sessionKeyPrefix" value="${redis.keyPrefix}_session_" 
-		/> -->
-	<!-- </bean> -->
-	<!-- <bean id="sessionDAO"
-		class="com.thinkgem.jeesite.common.security.shiro.session.CacheSessionDAO">
-		<property name="sessionIdGenerator" ref="idGen" />
-		<property name="activeSessionsCacheName" value="activeSessionsCache" />
-		<property name="cacheManager" ref="shiroCacheManager" />
-	</bean> -->
 
-	<!-- 自定义系统缓存管理器 -->
-	<!-- <bean id="shiroCacheManager" class="com.thinkgem.jeesite.common.security.shiro.cache.JedisCacheManager"> -->
-	<!-- <property name="cacheKeyPrefix" value="${redis.keyPrefix}_cache_" /> -->
-	<!-- </bean> -->
 	<bean id="shiroCacheManager" class="org.apache.shiro.cache.ehcache.EhCacheManager">
 		<property name="cacheManager" ref="cacheManager" />
 	</bean>
