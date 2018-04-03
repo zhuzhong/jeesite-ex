@@ -51,7 +51,7 @@
 	<bean id="casFilter" class="org.apache.shiro.cas.CasFilter">
 		<property name="failureUrl" value="${adminPath}/login" />
 	</bean>
- 	<bean id="casRealm" class="com.aldb.magicmall.sys.api.MallCasRealm">
+ 	<bean id="casRealm" class="com.z.m.sys.api.MallCasRealm">
 		<property name="casServerUrlPrefix" value="${cas.server.url}"></property>
 		<property name="casService" value="${cas.project.url}${adminPath}/cas"></property>
 		<property name="casUserService" ref="casUserService"></property>

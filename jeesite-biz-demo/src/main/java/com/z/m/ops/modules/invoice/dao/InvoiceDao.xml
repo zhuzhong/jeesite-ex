@@ -1,0 +1,118 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.z.m.ops.modules.invoice.dao.InVoiceDao">
+	<select id="get"
+		resultType="com.z.m.ops.modules.invoice.entity.Invoice">
+		select oid as id ,
+		order_id as orderId,
+		customer_id as
+		customerId,
+		invoice_type as invoiceType,
+		invoice_title as invoiceTitle,
+		invoice_content as invoiceContent,
+		state,
+		rece_province as receProvince,
+		rece_city as receCity,
+		rece_county as receCounty,
+		rece_town as receTown,
+		rece_address as receAddress,
+		rece_full_address as receFullAddress,
+		created_at as createdAt,
+		updated_at as updatedAt,
+		created_by as
+		createdBy,
+		updated_by as updatedBy,
+		remark,
+		delete_flag as deleteFlag
+		from t_m_invoice
+		where
+		oid=#{id} and delete_flag=1
+	</select>
+
+	<delete id="del">
+		update t_m_invoice set delete_flag=0 where
+		oid=#{id}
+	</delete>
+
+	<insert id="add"
+		parameterType="com.z.m.ops.modules.invoice.entity.Invoice"
+		keyProperty="id" useGeneratedKeys="true">
+		insert into t_m_invoice(
+		order_id,customer_id,invoice_type,invoice_title,invoice_content,state,rece_province,
+		rece_city,rece_county,rece_town,rece_address,rece_full_address,
+		created_at,
+		updated_at,created_by,updated_by,remark
+		)
+		values(
+		#{orderId,jdbcType=BIGINT},#{customerId,jdbcType=BIGINT},#{invoiceType,jdbcType=BIGINT},
+		#{invoiceTitle,jdbcType=BIGINT},#{invoiceContent,jdbcType=BIGINT},#{state,jdbcType=TINYINT},
+		#{receProvince,jdbcType=BIGINT},#{receCity,jdbcType=BIGINT},#{receCounty,jdbcType=BIGINT},#{receTown,jdbcType=BIGINT},
+		#{receAddress,jdbcType=VARCHAR}, #{receFullAddress,jdbcType=VARCHAR},
+		#{createdAt,jdbcType=TIMESTAMP},
+		#{updatedAt,jdbcType=TIMESTAMP},
+		#{createdBy,jdbcType=VARCHAR},
+		#{updatedBy,jdbcType=VARCHAR},
+		#{remark,jdbcType=VARCHAR}
+
+		)
+	</insert>
+
+	<update id="update"
+		parameterType="com.z.m.ops.modules.invoice.entity.Invoice">
+		update t_m_invoice
+		<set>
+			<if test="createdAt != null">
+				created_at=#{createdAt,jdbcType=TIMESTAMP},
+			</if>
+			<if test="updatedAt != null">
+				updated_at=#{updatedAt,jdbcType=TIMESTAMP},
+			</if>
+
+		</set>
+		where oid=#{id}
+	</update>
+
+	<select id="findList"
+		resultType="com.z.m.ops.modules.invoice.entity.Invoice">
+		select oid as id ,
+		order_id as orderId,
+		customer_id as customerId,
+		invoice_type as invoiceType,
+		invoice_title as invoiceTitle,
+		invoice_content as invoiceContent,
+		state,
+		rece_province as receProvince,
+		rece_city as receCity,
+		rece_county as receCounty,
+		rece_town as receTown,
+		rece_address as receAddress,
+		rece_full_address as receFullAddress,
+		created_at as createdAt,
+		updated_at as updatedAt,
+		created_by as
+		createdBy,
+		updated_by as updatedBy,
+		remark,
+		delete_flag as deleteFlag
+		from t_m_invoice
+		<where>
+			1=1
+			<if test="orderId!=null and orderId !='' ">
+				and order_id=#{orderId}
+			</if>
+			<if
+				test="beginCreatedAt !=null and beginCreatedAt !='' and endCreatedAt !=null and endCreatedAt !='' ">
+				and created_at between #{beginCreatedAt} and #{endCreatedAt}
+			</if>
+
+		</where>
+
+		<choose>
+			<when test="page!=null and page.orderBy!=null and page.orderBy!='' ">
+				order by #{page.orderBy}
+			</when>
+		</choose>
+	</select>
+
+</mapper>
