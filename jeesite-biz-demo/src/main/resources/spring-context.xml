@@ -27,7 +27,7 @@
 
 	<!-- 使用Annotation自动注册Bean，解决事物失效问题：在主容器中不扫描@Controller注解，在SpringMvc中只扫描@Controller注解。 -->
 	<context:component-scan
-		base-package="com.aldb.magicmall"><!-- base-package 如果多个，用“,”分隔 -->
+		base-package="com.z.m"><!-- base-package 如果多个，用“,”分隔 -->
 		<context:exclude-filter type="annotation"
 			expression="org.springframework.stereotype.Controller" />
 		<context:exclude-filter type="annotation"
@@ -37,18 +37,18 @@
 	<!-- MyBatis begin -->
 	<bean id="sqlSessionFactory" class="org.mybatis.spring.SqlSessionFactoryBean">
 		<property name="dataSource" ref="dataSource" />
-		<property name="typeAliasesPackage" value="com.aldb.magicmall" />
+		<property name="typeAliasesPackage" value="com.z.m" />
 		<!-- <property name="typeAliasesSuperType"
 			value="com.thinkgem.jeesite.common.persistence.BaseEntity" /> -->
-		<property name="mapperLocations" value="classpath:/com/aldb/magicmall/ops/modules/**/*.xml" />
+		<property name="mapperLocations" value="classpath:/com/z/m/ops/modules/**/*.xml" />
 		<property name="configLocation" value="classpath:/mybatis-config.xml"></property>
 	</bean>
 
 	<!-- 扫描basePackage下所有以@MyBatisDao注解的接口 -->
 	<bean id="mapperScannerConfigurer" class="org.mybatis.spring.mapper.MapperScannerConfigurer">
 		<property name="sqlSessionFactoryBeanName" value="sqlSessionFactory" />
-		<property name="basePackage" value="com.aldb.magicmall" />
-		<property name="markerInterface" value="com.aldb.common.dao.BaseDao" />
+		<property name="basePackage" value="com.z.m" />
+		<property name="markerInterface" value="com.z.common.dao.BaseDao" />
 	</bean>
 
 	<!-- 定义事务 -->
