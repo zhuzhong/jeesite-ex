@@ -39,7 +39,7 @@
 		<freemarker.version>2.3.20</freemarker.version>
 
 		<!-- jdbc driver setting -->
-		<mysql.driver.version>5.1.30</mysql.driver.version>
+		<mysql.driver.version>5.1.34</mysql.driver.version>
 
 		<!-- environment setting -->
 		<jdk.version>1.7</jdk.version>
