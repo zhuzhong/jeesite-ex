@@ -87,7 +87,7 @@
 		<property name="securityManager" ref="securityManager" />
 	</bean>
 
-	<bean id="casConfig" class="com.thinkgem.jeesite.cas.CasConfig">
+	<bean id="casConfig" class="com.z.jeesite.sys.api.dto.CasConfig">
 		<property name="casUrl" value="${cas.server.url}"></property>
 		<property name="clientUrl" value="${cas.project.url}"></property>
 	</bean>

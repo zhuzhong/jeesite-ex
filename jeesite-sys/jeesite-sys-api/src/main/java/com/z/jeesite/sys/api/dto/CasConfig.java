@@ -1,9 +1,16 @@
-package com.thinkgem.jeesite.cas;
+package com.z.jeesite.sys.api.dto;
 
-public class CasConfig {
+import java.io.Serializable;
+
+public class CasConfig implements Serializable{
 
 	
-	private String casUrl;
+	/**
+     * 
+     */
+    private static final long serialVersionUID = 3060677377804243370L;
+
+    private String casUrl;
 	
 	private String clientUrl;
 
