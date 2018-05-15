@@ -34,7 +34,7 @@ import com.z.jeesite.sys.api.dto.CasUser;
 
 
 /**
- * 商城后台与cas，shiro集成的类
+ * 业务系统与cas，shiro集成的类
  * 
  * @author zhuzhong
  *
@@ -133,7 +133,7 @@ public class MallCasRealm extends CasRealm {
 			//getSystemService().updateUserLoginInfo(user);
 			// 记录登录日志
 			//LogUtils.saveLog(Servlets.getRequest(), "系统登录");
-			System.out.println(JSON.toJSONString(info));
+			//System.out.println(JSON.toJSONString(info));
 			return info;
 		} else {
 			return null;
